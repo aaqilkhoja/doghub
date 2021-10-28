@@ -9,11 +9,21 @@
         <entry key="app/src/main/res/drawable-v24/lock_focused.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable/custom_email_input.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable/custom_input.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_dehaze_24.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/layout/activity_create_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1651469098277609" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment1.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment2.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment3.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment4.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.25923439649400726" />
       </map>
     </option>
   </component>

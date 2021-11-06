@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".CreateProfile"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

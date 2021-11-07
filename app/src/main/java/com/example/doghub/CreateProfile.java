@@ -87,6 +87,9 @@ public class CreateProfile extends AppCompatActivity {
         //declaring the references
         documentReference = db.collection("user").document(currentUserID);
         storageReference = FirebaseStorage.getInstance().getReference("Profile Images");
+        // storageReference2= FirebaseStorage.getInstance().getReference("Profile Images 2");
+
+
         databaseReference = database.getReference("All Users");
 
         //declaring what the button will do once clicked
@@ -111,6 +114,18 @@ public class CreateProfile extends AppCompatActivity {
             }
         });
 
+      /*  imageView2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, Pick_Image);
+            }
+        });*/
+
     }
 
 
@@ -123,8 +138,12 @@ public class CreateProfile extends AppCompatActivity {
 
                 imageUri = data.getData();
 
+
                 //loading an image into Picasso
                 Picasso.get().load(imageUri).into(imageView);
+
+                //   imageUri2 = data.getData();
+                //   Picasso.get().load(imageUri2).into(imageView2);
 
             }
 
@@ -133,6 +152,7 @@ public class CreateProfile extends AppCompatActivity {
         }
 
     }
+
 
     private String getFileExt(Uri uri) {
 
@@ -157,7 +177,7 @@ public class CreateProfile extends AppCompatActivity {
 
 
         //making sure that all fields aren't blank
-        if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(bio) || !TextUtils.isEmpty(dogs_name) || !TextUtils.isEmpty(breed) || !TextUtils.isEmpty(dogs_age) || imageUri != null) {
+        if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(bio) || !TextUtils.isEmpty(dogs_name) || !TextUtils.isEmpty(breed) || !TextUtils.isEmpty(dogs_age) || imageUri != null || imageUri2 != null) {
 
 
             //setting the progress bar visibility on while the data is being loaded into firebase
@@ -165,7 +185,9 @@ public class CreateProfile extends AppCompatActivity {
 
             progessBar.setVisibility(View.VISIBLE);
             final StorageReference reference = storageReference.child(System.currentTimeMillis() + "." + getFileExt(imageUri));
+            //   final StorageReference reference2 = storageReference2.child(System.currentTimeMillis()+"."+getFileExt(imageUri2));
             uploadTask = reference.putFile(imageUri);
+            // uploadTask = reference.putFile(imageUri2);
 
             Task<Uri> urlTask = uploadTask.continueWithTask((new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
@@ -181,6 +203,7 @@ public class CreateProfile extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
+                        //    Uri downloadUri2 = task.getResult();
 
                         Map<String, String> profile = new HashMap<>();
                         profile.put("name", name);
@@ -190,6 +213,7 @@ public class CreateProfile extends AppCompatActivity {
                         profile.put("dogs_age", dogs_age);
                         profile.put("url", downloadUri.toString());
                         profile.put("privacy", "Public");
+                        //   profile.put("url2", downloadUri2.toString());
 
 //saving data in the realtime database
                         member.setName(name);
@@ -199,6 +223,7 @@ public class CreateProfile extends AppCompatActivity {
                         member.setDogs_name(dogs_name);
                         member.setUid(currentUserID);
                         member.setUrl(downloadUri.toString());
+                        //   member.setUrl(downloadUri2.toString());
 
                         databaseReference.child(currentUserID).setValue(member);
 

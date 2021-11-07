@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--   android:orienation="vertical"
+       android:gravity="center"
+       tools:context=".UpdateProfile"
+       android:orientation="vertical"-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Update Profile"
+        android:textAlignment="center"
+        android:textColor="#280b45"
+        android:layout_marginBottom="200dp"
+        android:textSize="40dp" />
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:id="@+id/et_name_up"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:layout_margin="4dp"
+        android:textColorHint="@color/grey"
+        android:textColor="#280b45" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dogs Name"
+        android:id="@+id/et_dog_name_up"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:layout_margin="4dp"
+        android:textColorHint="@color/grey"
+        android:textColor="#280b45" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dog Breed"
+        android:id="@+id/et_breed_up"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:layout_margin="4dp"
+        android:textColorHint="@color/grey"
+        android:textColor="#280b45" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dog's Age"
+        android:id="@+id/et_dog_age_up"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:layout_margin="4dp"
+        android:textColorHint="@color/grey"
+        android:textColor="#280b45" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bio"
+        android:id="@+id/et_bio_up"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:layout_margin="4dp"
+        android:textColorHint="@color/grey"
+        android:textColor="#280b45" />
+
+
+    android:scaleType="fitCenter" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Profile"
+        android:textColor="#280b45"
+        android:background="#cd9575"
+        android:textSize="20dp"
+        android:id="@+id/btn_up" />
+</LinearLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +15,11 @@ import android.content.Intent;
 
 
 public class Fragment1 extends Fragment implements View.OnClickListener {
-    @Nullable
-    @Override
+
+    ImageView imageView;
+    TextView nameEt, dogs_nameEt, dogs_ageEt, breedEt, bioEt;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment1, container, false);
@@ -26,8 +30,9 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        TextView textView = getActivity().findViewById(R.id.tv_profile);
 
+        //  imageView=getActivity().findViewById(R.id.iv_f1);
+        TextView textView = getActivity().findViewById(R.id.tv_profile);
         textView.setOnClickListener(this);
 
     }

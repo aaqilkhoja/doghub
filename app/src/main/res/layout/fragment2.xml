@@ -4,13 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="search"
-        android:textSize="50sp"
+        android:hint="Search"
+        android:layout_margin="10dp"
+        android:id="@+id/searchf3"
+        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:padding="10dp"
+        android:paddingLeft="20dp"
+        android:textColor="#280b45"
+        android:drawablePadding="5dp" />
 
-
-        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

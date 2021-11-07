@@ -8,8 +8,7 @@
         android:id="@+id/tv_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:text="feed"
+        android:text="profile"
         android:textSize="50sp"
 
 

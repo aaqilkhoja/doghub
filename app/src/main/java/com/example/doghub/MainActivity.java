@@ -35,25 +35,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //declaring onNav
     private BottomNavigationView.OnNavigationItemSelectedListener onNav = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
+
+        //method that determines which fragment to go to based on user selection
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selected = null;
             switch (item.getItemId()) {
+
+                //sends to feed fragment
                 case R.id.bottom_feed:
-                    selected = new Fragment1();
+                    selected = new Fragment4();
                     break;
 
+                //sends to search fragment
                 case R.id.bottom_search:
                     selected = new Fragment2();
                     break;
 
+                //sends to message fragment
                 case R.id.bottom_message:
                     selected = new Fragment3();
                     break;
 
+                //sends to profile fragment
                 case R.id.bottom_profile:
-                    selected = new Fragment4();
+                    selected = new Fragment1();
                     break;
 
 

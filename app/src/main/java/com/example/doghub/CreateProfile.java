@@ -1,4 +1,10 @@
+//I have established a key here to identify areas of improvement
+//they are marked with "IMP"
+
+
 package com.example.doghub;
+
+//importing all the required classes/packages
 
 import android.content.ContentResolver;
 import android.net.Uri;
@@ -37,6 +43,7 @@ import java.util.*;
 public class CreateProfile extends AppCompatActivity {
 
 
+    //creating the variables
     EditText etName, etDogName, etDogBreed, etDogAge, etBio;
     Button button;
     ImageView imageView, imageView2;
@@ -48,8 +55,6 @@ public class CreateProfile extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference documentReference;
-
-
     private static final int Pick_Image = 1;
     All_User_Members member;
     String currentUserID;
@@ -61,6 +66,7 @@ public class CreateProfile extends AppCompatActivity {
         setContentView(R.layout.activity_create_profile);
 
 
+        //equating the variables declared above with their respective IDs
         member = new All_User_Members();
         imageView = findViewById(R.id.imageView_dog_cp);
         imageView2 = findViewById(R.id.imageView_cp);
@@ -72,25 +78,32 @@ public class CreateProfile extends AppCompatActivity {
         button = findViewById(R.id.btn_cp);
         progessBar = findViewById(R.id.progressbar_cp);
 
+        //getting the instance of the current user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
         currentUserID = user.getUid();
 
+        //declaring the references
         documentReference = db.collection("user").document(currentUserID);
-
         storageReference = FirebaseStorage.getInstance().getReference("Profile Images");
         databaseReference = database.getReference("All Users");
 
+        //declaring what the button will do once clicked
         button.setOnClickListener(new View.OnClickListener() {
             @Override
+            //on clicking, the upload data method will be called
             public void onClick(View v) {
                 uploadData();
             }
         });
 
+        //once user clicks on the image, it will allow them to select an image from their phone
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                //setting type of variable to any type of image, not limiting to just one for example jpeg
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, Pick_Image);
@@ -122,6 +135,8 @@ public class CreateProfile extends AppCompatActivity {
     }
 
     private String getFileExt(Uri uri) {
+
+        //we are using a two-way map that maps MIME-types to file extensions and vice versa
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType((contentResolver.getType(uri)));
@@ -129,14 +144,24 @@ public class CreateProfile extends AppCompatActivity {
 
     private void uploadData() {
 
+        //converting all entered data into Strings for now, including age
+        //will have to change later so that age only takes in number
+        //this comes in the improvements step of the code (IMP)
+
+
         String name = etName.getText().toString();
         String dogs_name = etDogName.getText().toString();
         String bio = etBio.getText().toString();
         String breed = etDogBreed.getText().toString();
         String dogs_age = etDogAge.getText().toString();
 
+
+        //making sure that all fields aren't blank
         if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(bio) || !TextUtils.isEmpty(dogs_name) || !TextUtils.isEmpty(breed) || !TextUtils.isEmpty(dogs_age) || imageUri != null) {
 
+
+            //setting the progress bar visibility on while the data is being loaded into firebase
+            //might have to work on this(IMP)
 
             progessBar.setVisibility(View.VISIBLE);
             final StorageReference reference = storageReference.child(System.currentTimeMillis() + "." + getFileExt(imageUri));
@@ -207,6 +232,7 @@ public class CreateProfile extends AppCompatActivity {
                 }
             });
         } else {
+            //error toast message if all the fields are not filled
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
         }
 

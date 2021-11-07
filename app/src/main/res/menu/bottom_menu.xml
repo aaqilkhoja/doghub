@@ -3,10 +3,10 @@
     xmlns:app="http://schema.android.com/apk/res-auto">
 
     <item
-        android:title="Feed"
-        android:icon="@drawable/ic_baseline_dehaze_24"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_person_24"
         app:showAsAction="always"
-        android:id="@+id/bottom_feed" />
+        android:id="@+id/bottom_profile" />
 
     <item
         android:title="Search"
@@ -21,8 +21,9 @@
         android:id="@+id/bottom_message" />
 
     <item
-        android:title="Profile"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Feed"
+        android:icon="@drawable/ic_baseline_dehaze_24"
+
         app:showAsAction="always"
-        android:id="@+id/bottom_profile" />
+        android:id="@+id/bottom_feed" />
 </menu>

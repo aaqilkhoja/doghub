@@ -91,7 +91,7 @@
         android:text="Save Profile"
         android:textColor="#280b45"
         android:background="#cd9575"
-        android:layout_marginTop="50"
+        android:layout_marginTop="50dp"
         android:textSize="20dp"
         android:id="@+id/btn_up" />
 </LinearLayout>

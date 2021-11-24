@@ -17,9 +17,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ProgressBar;
+import android.widget.PopupMenu;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,8 +51,9 @@ public class CreateProfile extends AppCompatActivity {
 
     //creating the variables
     EditText etName, etDogName, etDogBreed, etDogAge, etBio;
-    Button button;
-    ImageView imageView, imageView2;
+    Button button, char1, char2, char3, char4, char5;
+
+    ImageView imageView;
     ProgressBar progessBar;
     Uri imageUri, imageUri2;
     UploadTask uploadTask;
@@ -57,8 +64,9 @@ public class CreateProfile extends AppCompatActivity {
     DocumentReference documentReference;
     private static final int Pick_Image = 1;
     All_User_Members member;
-    String currentUserID;
+    String currentUserID, choice1, choice2, choice3, choice4, choice5;
 
+    //String [] characteristics = {"happy","2","3","4","5","6","7","8","9","0"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +77,20 @@ public class CreateProfile extends AppCompatActivity {
         //equating the variables declared above with their respective IDs
         member = new All_User_Members();
         imageView = findViewById(R.id.imageView_dog_cp);
-        imageView2 = findViewById(R.id.imageView_cp);
+        // imageView2 = findViewById(R.id.imageView_cp);
         etName = findViewById(R.id.et_name_cp);
         etBio = findViewById(R.id.et_bio_cp);
         etDogName = findViewById(R.id.et_dog_name_cp);
         etDogBreed = findViewById(R.id.et_breed_cp);
         etDogAge = findViewById(R.id.et_dog_age_cp);
         button = findViewById(R.id.btn_cp);
+
+        char1 = findViewById(R.id.char1_btn);
+        char2 = findViewById(R.id.char2_btn);
+        char3 = findViewById(R.id.char3_btn);
+        char4 = findViewById(R.id.char4_btn);
+        char5 = findViewById(R.id.char5_btn);
+
         progessBar = findViewById(R.id.progressbar_cp);
 
         //getting the instance of the current user
@@ -87,6 +102,7 @@ public class CreateProfile extends AppCompatActivity {
         //declaring the references
         documentReference = db.collection("user").document(currentUserID);
         storageReference = FirebaseStorage.getInstance().getReference("Profile Images");
+
         // storageReference2= FirebaseStorage.getInstance().getReference("Profile Images 2");
 
 
@@ -114,6 +130,130 @@ public class CreateProfile extends AppCompatActivity {
             }
         });
 
+
+        char1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(CreateProfile.this, char1);
+
+                popupMenu.getMenuInflater().inflate(R.menu.dog_char_popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(CreateProfile.this, "You clicked " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        choice1 = item.getTitle().toString();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+
+            }
+        });
+
+  /*              (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             //   PopupMenu popupMenu = new PopupMenu(CreateProfile.this, spino);
+               // String choice = new String();
+
+                popupMenu.getMenuInflater().inflate(R.menu.dog_char_popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(CreateProfile.this, "You clicked "+ item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+
+                    }
+                });
+                popupMenu.show();
+
+            }
+
+        });*/
+
+
+        char2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(CreateProfile.this, char2);
+
+                popupMenu.getMenuInflater().inflate(R.menu.dog_char_popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(CreateProfile.this, "You clicked " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        choice2 = item.getTitle().toString();
+                        return true;
+
+
+                    }
+                });
+                popupMenu.show();
+
+            }
+        });
+
+
+        char3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(CreateProfile.this, char3);
+
+                popupMenu.getMenuInflater().inflate(R.menu.dog_char_popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(CreateProfile.this, "You clicked " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        choice3 = item.getTitle().toString();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+
+            }
+        });
+
+        char4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PopupMenu popupMenu = new PopupMenu(CreateProfile.this, char4);
+
+                popupMenu.getMenuInflater().inflate(R.menu.dog_char_popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(CreateProfile.this, "You clicked " + item.getTitle(), Toast.LENGTH_SHORT).show();
+
+                        choice4 = item.getTitle().toString();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+
+        char5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PopupMenu popupMenu = new PopupMenu(CreateProfile.this, char5);
+
+                popupMenu.getMenuInflater().inflate(R.menu.dog_char_popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(CreateProfile.this, "You clicked " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        choice5 = item.getTitle().toString();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+    }
+
+    ;
       /*  imageView2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -126,7 +266,7 @@ public class CreateProfile extends AppCompatActivity {
             }
         });*/
 
-    }
+
 
 
     @Override
@@ -174,10 +314,22 @@ public class CreateProfile extends AppCompatActivity {
         String bio = etBio.getText().toString();
         String breed = etDogBreed.getText().toString();
         String dogs_age = etDogAge.getText().toString();
+        String char1str = choice1;
+        String char2str = choice2;
+        String char3str = choice3;
+        String char4str = choice4;
+        String char5str = choice5;
+
+        //  String char2str = char2.getText().toString();
+        // String char3str = char3.getText().toString();
+        //  String char4str = char4.getText().toString();
+        //  String char5str = char5.getText().toString();
 
 
         //making sure that all fields aren't blank
-        if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(bio) || !TextUtils.isEmpty(dogs_name) || !TextUtils.isEmpty(breed) || !TextUtils.isEmpty(dogs_age) || imageUri != null || imageUri2 != null) {
+        if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(bio) || !TextUtils.isEmpty(dogs_name) || !TextUtils.isEmpty(breed) || !TextUtils.isEmpty(dogs_age) || imageUri != null || !TextUtils.isEmpty(char1str)
+                || !TextUtils.isEmpty(char2str) || !TextUtils.isEmpty(char3str) || !TextUtils.isEmpty(char4str) || !TextUtils.isEmpty(char5str)) {
+            // || imageUri2 != null
 
 
             //setting the progress bar visibility on while the data is being loaded into firebase
@@ -212,7 +364,14 @@ public class CreateProfile extends AppCompatActivity {
                         profile.put("bio", bio);
                         profile.put("dogs_age", dogs_age);
                         profile.put("url", downloadUri.toString());
+                        profile.put("char1", char1str);
+                        profile.put("char2", char2str);
+                        profile.put("char3", char3str);
+                        profile.put("char4", char4str);
+                        profile.put("char5", char5str);
+
                         profile.put("privacy", "Public");
+
                         //   profile.put("url2", downloadUri2.toString());
 
 //saving data in the realtime database
@@ -221,6 +380,12 @@ public class CreateProfile extends AppCompatActivity {
                         member.setBreed(breed);
                         member.setDogs_age(dogs_age);
                         member.setDogs_name(dogs_name);
+                        member.setChar1(char1str);
+                        member.setChar2(char2str);
+                        member.setChar3(char3str);
+                        member.setChar4(char4str);
+                        member.setChar5(char5str);
+
                         member.setUid(currentUserID);
                         member.setUrl(downloadUri.toString());
                         //   member.setUrl(downloadUri2.toString());

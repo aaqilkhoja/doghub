@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         //method that determines which fragment to go to based on user selection
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selected = null;
+
+
             switch (item.getItemId()) {
 
                 //sends to feed fragment
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 //sends to message fragment
                 case R.id.bottom_message:
                     selected = new Fragment3();
+
                     break;
 
                 //sends to profile fragment
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 
     @Override
     protected void onStart() {

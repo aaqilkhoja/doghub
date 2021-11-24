@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +9,8 @@
     android:gravity="center
 "
     android:background="#fde98a"
-    tools:context=".CreateProfile">
+    tools:context=".CreateProfile"
+    tools:ignore="NamespaceTypo">
 
     <!--<TextView
         android:layout_width="match_parent"
@@ -39,7 +41,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    <!-- <androidx.cardview.widget.CardView
         android:layout_width="75dp"
         android:layout_height="75dp"
         app:cardPreventCornerOverlap="false"
@@ -55,6 +57,7 @@
 
 
     </androidx.cardview.widget.CardView>
+    -->
 
     <EditText
 
@@ -65,7 +68,7 @@
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:layout_margin="4dp"
-
+        android:background="@android:color/white"
         android:textColorHint="@color/grey"
         android:textColor="#280b45" />
 
@@ -78,6 +81,7 @@
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:layout_margin="4dp"
+        android:background="@android:color/white"
         android:textColorHint="@color/grey"
         android:textColor="#280b45" />
 
@@ -90,6 +94,7 @@
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:layout_margin="4dp"
+        android:background="@android:color/white"
         android:textColorHint="@color/grey"
         android:textColor="#280b45" />
 
@@ -102,6 +107,7 @@
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:layout_margin="4dp"
+        android:background="@android:color/white"
         android:textColorHint="@color/grey"
         android:textColor="#280b45" />
 
@@ -113,11 +119,82 @@
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:layout_margin="4dp"
+        android:background="@android:color/white"
         android:textColorHint="@color/grey"
         android:textColor="#280b45" />
 
 
+    <!--[CDATA[
+
+
     android:scaleType="fitCenter" />
+
+    ]]-->
+
+    <Button
+        android:id="@+id/char1_btn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_corner"
+        android:text="char1"
+        app:layout_constraintEnd_toStartOf="@+id/char2"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="564dp" />
+
+
+    <Button
+        android:id="@+id/char2_btn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="18dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Char 2"
+        app:layout_constraintEnd_toStartOf="@+id/char3"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="564dp" />
+
+    <Button
+        android:id="@+id/char3_btn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Char 3"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="564dp"
+
+
+        />
+
+
+    <Button
+        android:id="@+id/char4_btn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Char 4"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="564dp" />
+
+    <Button
+        android:id="@+id/char5_btn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Char 5"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="564dp" />
 
 
     <Button
@@ -128,6 +205,7 @@
         android:background="#cd9575"
         android:textSize="20dp"
         android:id="@+id/btn_cp" />
+
 
     <ProgressBar
         android:layout_width="wrap_content"

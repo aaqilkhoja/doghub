@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            app:cardBackgroundColor="#fde98a">
+
+            <ImageButton
+                android:id="@+id/sandwichButton_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_margin='10dp'
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_menu_24">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="MY PROFILE"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+
+            </TextView>
+
+            <!--ImageButton
+                android:id="@+id/editPencilButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_margin='10dp'
+                android:background="@android:color/transparent"
+
+                android:src="@drawable/ic_baseline_edit_24">
+
+            </ImageButton-->
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="702dp"
+            android:background="#9EFFFFFF">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView_up"
+                android:layout_width="143dp"
+                android:layout_height="150dp"
+
+
+                android:layout_gravity="center"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                app:cardCornerRadius="75dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.086">
+
+
+                <ImageView
+                    android:id="@+id/profilePic_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="122dp"
+                    android:layout_margin="10dp"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <EditText
+
+                android:id="@+id/ownerName_up"
+                android:layout_width="199dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"
+                android:fontFamily="monospace"
+                android:hint="FIRST LAST"
+                android:minHeight="48dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:selectAllOnFocus="false"
+                android:textColor="#280b45"
+                android:textColorHint="@color/grey"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/up_send_message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.567"
+                app:layout_constraintStart_toEndOf="@+id/cardView_up"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.791"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/up_send_message"
+                android:layout_width="200dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+
+
+                android:text="send message"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/ownerName_up"
+                app:layout_constraintStart_toEndOf="@+id/cardView_up"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/ownerBio_up"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="25dp"
+
+                app:layout_constraintStart_toEndOf="@+id/cardView_up"
+                app:layout_constraintTop_toTopOf="@id/textView_up"
+                android:hint="BIO"
+                android:paddingLeft="10dp"
+                android:textColor="#280b45"
+                android:textColorHint="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/up_send_message"
+                app:layout_constraintVertical_bias="0.081"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/dogAge_up"
+                android:layout_width="176dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:hint="AGE"
+                android:minHeight="48dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#280b45"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dogBreed_up"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/char1_up"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corner"
+                android:text="char1"
+                app:layout_constraintEnd_toStartOf="@+id/char2_up"
+                app:layout_constraintHorizontal_bias="0.234"
+                app:layout_constraintRight_toLeftOf="@id/char2_up"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dogAge_up"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/char2_up"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/rounded_corner"
+                android:text="Char2"
+                app:layout_constraintEnd_toStartOf="@+id/char3_up"
+                app:layout_constraintTop_toBottomOf="@id/dogAge_up"
+                tools:ignore="MissingConstraints,UnknownId" />
+
+            <TextView
+                android:id="@+id/char3_up"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/rounded_corner"
+                android:text="Char3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/char2_up"
+                app:layout_constraintTop_toBottomOf="@id/dogAge_up"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/char4_up"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_corner"
+                android:text="Char4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.035"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/char1_up"
+
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/char5_up"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/rounded_corner"
+                android:text="Char5"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/char3_up"
+
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/dogName_up"
+                android:layout_width="188dp"
+
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
+                android:layout_toLeftOf="@+id/dogBreed_up"
+                android:fontFamily="sans-serif-smallcaps"
+                android:hint="DOG NAME"
+                android:paddingStart="10dp"
+
+                android:paddingLeft="10dp"
+                android:singleLine="false"
+                android:textColor="#280b45"
+                android:textColorHint="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/dogBreed_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ownerBio_up"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/dogBreed_up"
+                android:layout_width="188dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="4dp"
+                android:layout_toLeftOf="@+id/dogName_up"
+
+                android:fontFamily="sans-serif-smallcaps"
+                android:hint="DOG BREED"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#280b45"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="@+id/char5_up"
+                app:layout_constraintHorizontal_bias="0.316"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dogName_up" />
+
+            <TextView
+                android:id="@+id/textView_up"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/rounded_corner"
+                android:fontFamily="sans-serif"
+                android:text="MEET MY DOG"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardView_up"
+                app:layout_constraintTop_toBottomOf="@+id/ownerBio_up"
+                app:layout_constraintVertical_bias="0.362"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="12dp">
+
+            </TextView>
+
+            <!--View
+                android:layout_width="350dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="#fde98a"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/char2_f1"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="30dp" /-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+</ScrollView>
+
+

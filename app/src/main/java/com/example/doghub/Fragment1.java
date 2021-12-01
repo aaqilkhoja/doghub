@@ -1,5 +1,6 @@
 package com.example.doghub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,12 +26,14 @@ import com.squareup.picasso.Picasso;
 
 public class Fragment1 extends Fragment implements View.OnClickListener {
 
+    //declaring variables
     ImageView imageView;
     TextView nameEt, dogs_nameEt, dogs_ageEt, breedEt, bioEt;
     TextView char1_tv, char2_tv, char3_tv, char4_tv, char5_tv;
-    ImageButton ib_edit;
+    ImageButton ib_message, ib_menu;
     Button btnsendmessage;
 
+    //drawing the Fragment UI for the firsrt time
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment1, container, false);
@@ -43,6 +44,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //connecting the java variables with the IDs of frontend XML
         imageView = getActivity().findViewById(R.id.profilePic);
         nameEt = getActivity().findViewById(R.id.ownerName);
         dogs_nameEt = getActivity().findViewById(R.id.dogName);
@@ -55,24 +57,31 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         char4_tv = getActivity().findViewById(R.id.char4_f1);
         char5_tv = getActivity().findViewById(R.id.char5_f1);
 
-        ib_edit = getActivity().findViewById(R.id.editPencilButton);
-        btnsendmessage = getActivity().findViewById(R.id.frag1_send_message);
+        ib_menu = getActivity().findViewById(R.id.sandwichButton);
 
-        ib_edit.setOnClickListener(this);
+        ib_message = getActivity().findViewById(R.id.frag1_send_message);
 
-        btnsendmessage.setOnClickListener(this);
+        //implementing onClickListeners to specify the events that will occur on the click of a widget
+        ib_menu.setOnClickListener(this);
+
+        ib_message.setOnClickListener(this);
 
     }
 
+
+    //defining what will happen when a button is pressed
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.editPencilButton:
-                Intent intent = new Intent(getActivity(), UpdateProfile.class);
-                startActivity(intent);
+            //if the sandwich button is clicked, it will open up bottomSheetMenu
+            case R.id.sandwichButton:
+
+                BottomSheetMenu bottomSheetMenu = new BottomSheetMenu();
+                bottomSheetMenu.show(getFragmentManager(), "bottomsheet");
                 break;
 
+            //if the messages button was clicked it will take you to a page that has all the users to chat wih
             case R.id.frag1_send_message:
                 Intent in = new Intent(getActivity(), ChatActivity.class);
                 startActivity(in);
@@ -81,23 +90,25 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         }
     }
 
+    //
     @Override
     public void onStart() {
         super.onStart();
 
 
+        //initializing firebase and getting the current user being referenced
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        //had to add if statement because we were getting a null current user id.
-        //if statement checks if user is logged in, if they aren't, intent sends them back to main login page
-        //should be going to login to begin with
         if (user != null) {
+            //getting the user's id
             String currentid = user.getUid();
 
 
+            //referencing firestore and google firebase
             DocumentReference reference;
             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
+            //establishing the user path
             reference = firestore.collection("user").document(currentid);
 
             reference.get()
@@ -105,6 +116,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
+                            //checking if the  user exists. If user exists, we get the data from firebase
                             if (task.getResult().exists()) {
 
                                 String nameResult = task.getResult().getString("name");
@@ -120,19 +132,21 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                                 String char5Result = task.getResult().getString("char5");
 
 
+                                //setting the data into our fragment so it can be seen
                                 Picasso.get().load(url).into(imageView);
-                                nameEt.setText(nameResult);
-                                bioEt.setText(bioResult);
-                                dogs_nameEt.setText(dogNameResult);
-                                dogs_ageEt.setText(dogAgeResult);
-                                breedEt.setText(breedResult);
-                                char1_tv.setText(char1Result);
-                                char2_tv.setText(char2Result);
-                                char3_tv.setText(char3Result);
-                                char4_tv.setText(char4Result);
-                                char5_tv.setText(char5Result);
+                                nameEt.setText(nameResult.toUpperCase());
+                                bioEt.setText(bioResult.toUpperCase());
+                                dogs_nameEt.setText(dogNameResult.toUpperCase());
+                                dogs_ageEt.setText(dogAgeResult.toUpperCase());
+                                breedEt.setText(breedResult.toUpperCase());
+                                char1_tv.setText(char1Result.toUpperCase());
+                                char2_tv.setText(char2Result.toUpperCase());
+                                char3_tv.setText(char3Result.toUpperCase());
+                                char4_tv.setText(char4Result.toUpperCase());
+                                char5_tv.setText(char5Result.toUpperCase());
 
                             } else {
+                                //if there is no user or if any of fields are empty or null, the user will be sent to the create profile page so that they can create their profile
                                 Intent intent = new Intent(getActivity(), CreateProfile.class);
                                 startActivity(intent);
                             }

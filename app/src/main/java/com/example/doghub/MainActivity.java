@@ -1,13 +1,13 @@
 package com.example.doghub;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+//importing all the required classes/packages
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -57,10 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 //sends to message fragment
-                case R.id.bottom_message:
-                    selected = new Fragment3();
 
-                    break;
 
                 //sends to profile fragment
                 case R.id.bottom_profile:
@@ -76,19 +73,16 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    public void logout(View view) {
-        auth.signOut();
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
 
-    }
 
 
     @Override
     protected void onStart() {
         super.onStart();
 
+        //get current user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //if user is null start new intent and go from MainActivity to LoginActivity
         if (user == null) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);

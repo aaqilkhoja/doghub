@@ -81,13 +81,13 @@
                 android:layout_marginRight="20dp"
                 android:gravity="center_vertical|right">
 
-                <TextView
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:id="@+id/reply_item_event"
+                    android:id="@+id/send_message_event"
                     android:textColor="@android:color/black"
-                    android:text="Reply"
+                    android:text="Send Message"
                     android:padding="5dp" />
 
 

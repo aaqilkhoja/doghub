@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 
 public class UserProfile extends AppCompatActivity {
 
+    //declaration of variables
     ImageView imageView;
     TextView nameTv, dogs_nameTv, dogs_ageTv, breedTv, bioTv;
     TextView char1_tv, char2_tv, char3_tv, char4_tv, char5_tv;
@@ -35,21 +36,21 @@ public class UserProfile extends AppCompatActivity {
     String url, name, dogsName, dogsAge, breed, bio, userId;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseDatabase database;
-
     DocumentReference documentReference;
 
-
+    //initialize activity
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView((R.layout.activity_user_profile));
 
+        //retrieve user datae from firebase
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
         database = FirebaseDatabase.getInstance();
         btnsendmessage = findViewById(R.id.up_send_message);
         String currentUserId = user.getUid();
 
+        //connect attributes front-end and back-end
         nameTv = findViewById(R.id.ownerName_up);
         dogs_nameTv = findViewById(R.id.dogName_up);
         dogs_ageTv = findViewById(R.id.dogAge_up);
@@ -71,6 +72,8 @@ public class UserProfile extends AppCompatActivity {
 
             documentReference = db.collection("user").document(currentUserId);
 
+            //listens if user clicks on Send Message button
+            //if clicked, user is taken from UserProfile activity to MessageActivity
             btnsendmessage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -89,11 +92,12 @@ public class UserProfile extends AppCompatActivity {
     }
 
 
+    //Authenticate user from firebase and retrieve data to be displayed when Activity is started
     @Override
     public void onStart() {
         super.onStart();
 
-
+        //get user id from firebase
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
 
@@ -105,6 +109,8 @@ public class UserProfile extends AppCompatActivity {
 
         reference = firestore.collection("user").document(userId);
 
+        //if user exists on firebase, retrieve information from firebase
+        //if user does not exists, show toast message
         reference.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -112,6 +118,7 @@ public class UserProfile extends AppCompatActivity {
 
                         if (task.getResult().exists()) {
 
+                            //save retrieved values from firebase
                             String nameResult = task.getResult().getString("name");
                             String dogNameResult = task.getResult().getString("dogs_name");
                             String breedResult = task.getResult().getString("breed");
@@ -124,7 +131,7 @@ public class UserProfile extends AppCompatActivity {
                             String char4Result = task.getResult().getString("char4");
                             String char5Result = task.getResult().getString("char5");
 
-
+                            //set the values from firebase to be displayed
                             Picasso.get().load(url).into(imageView);
                             nameTv.setText(nameResult);
                             bioTv.setText(bioResult);

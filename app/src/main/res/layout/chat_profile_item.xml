@@ -55,7 +55,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:textSize="10sp"
+                android:textSize="15sp"
                 android:paddingStart="5dp"
                 android:textColor="@android:color/darker_gray"
                 android:id="@+id/namech_item_tv"
@@ -63,7 +63,7 @@
                 android:paddingLeft="5dp" />
 
 
-            <TextView
+            <!--TextView
 
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
                 android:paddingStart="5dp"
                 android:hint="questions"
 
-                android:paddingLeft="5dp" />
+                android:paddingLeft="5dp" /-->
 
         </LinearLayout>
     </LinearLayout>

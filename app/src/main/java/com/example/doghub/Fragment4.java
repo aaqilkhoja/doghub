@@ -28,50 +28,60 @@ import com.squareup.picasso.Picasso;
 
 public class Fragment4 extends Fragment implements View.OnClickListener {
 
+    //declaring variables
     FloatingActionButton fb;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference reference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
-
-
     ImageView imageView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        //inflating the view
         View view = inflater.inflate(R.layout.fragment4, container, false);
         return view;
     }
 
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        //getting the current user's id
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
 
+        //connecting front end and backend
         recyclerView = getActivity().findViewById(R.id.rv_f4);
+        imageView = getActivity().findViewById(R.id.iv_f4);
+        fb = getActivity().findViewById(R.id.floatingActionBtn);
+
+        //formatting recyclerview
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+
+        //getting the database reference
         databaseReference = database.getReference("All Events");
 
 
-        imageView = getActivity().findViewById(R.id.iv_f4);
-        fb = getActivity().findViewById(R.id.floatingActionBtn);
         reference = db.collection("user").document(currentUserId);
 
         fb.setOnClickListener(this);
         imageView.setOnClickListener(this);
 
+        //building FirebaseRecyclerOptions with a database reference and the EventMember class
         FirebaseRecyclerOptions<EventMember> options = new FirebaseRecyclerOptions.Builder<EventMember>().setQuery(databaseReference, EventMember.class).build();
 
         FirebaseRecyclerAdapter<EventMember, ViewHolder_Event> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<EventMember, ViewHolder_Event>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder_Event holder, int position, @NonNull EventMember model) {
 
+                //passing all references into the setItem method
                 holder.setItem(getActivity(), model.getName(), model.getUrl(), model.getUserid(), model.getKey(), model.getEvent(), model.getPrivacy(), model.getTime());
 
             }
@@ -80,6 +90,7 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
             @Override
             public ViewHolder_Event onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+                //inflating the view
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_item, parent, false);
 
 
@@ -90,8 +101,11 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
         firebaseRecyclerAdapter.startListening();
 
         recyclerView.setAdapter(firebaseRecyclerAdapter);
+
+
     }
 
+    //describes what will happen on the click of the mentioned buttons below
     @Override
     public void onClick(View v) {
 
@@ -100,10 +114,14 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
 
                 break;
 
+            //if hte floating button is clicked, user will be sent to EventActivity to create an event so it can be posted
             case R.id.floatingActionBtn:
+
+                //intent to take from this fragment to EventActivitty
                 Intent intent = new Intent(getActivity(), EventActivity.class);
                 startActivity(intent);
                 break;
+
 
         }
     }
@@ -115,12 +133,15 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
 
         reference.get().addOnCompleteListener((task ->
         {
+            //if the task exists, we will load in the url (profile picture) into the cardview
             if (task.getResult().exists()) {
                 String url = task.getResult().getString("url");
 
                 Picasso.get().load(url).into(imageView);
 
             } else {
+
+                //toast error message
                 Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }
         }));
